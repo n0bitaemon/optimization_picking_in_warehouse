@@ -20,9 +20,9 @@ def getInput():
     return N, M, Q, D, q
 
 # Check to see if we have enough products
-def end(q, N):
-    for i in range(N):
-        if(q[i] != 0): return False
+def end(q):
+    for p_num in q:
+        if(p_num != 0): return False
     return True
 
 def cal_nearest_shelf(c, D, M, r):
@@ -45,7 +45,7 @@ def nearest_neighbor():
     print("Start from shelf %d" % s)
     print("Matrix q:", q)
 
-    while end(q, N) == False:
+    while end(q) == False:
         c, distance = cal_nearest_shelf(c, D, M, r) # Find next shelf to go
         r.append(c)
         print("Go to shelf %d" % c)
@@ -60,7 +60,10 @@ def nearest_neighbor():
     print("Return to shelf %d" % s)
     total += D[c][s]
 
-    print(r)
-    print("Total distance =", total)
+    print("\nPATH TRAVERSED:")
+    for shelf in r[:-2]:
+        print("%d" % shelf, end="->")
+    print(r[-1])
+    print("\nTOTAL DISTANCE:", total)
 
 nearest_neighbor()
