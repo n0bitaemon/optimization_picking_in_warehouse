@@ -1,4 +1,4 @@
-from random import randint
+import random
 
 def getInput():
     # N: The number of type of product
@@ -37,7 +37,7 @@ def end(q):
 
 # Return a random number from start and end
 def rand_num(start, end):
-    return randint(start, end - 1)
+    return random.randint(start, end - 1)
 
 # Check if a shelf is already traversed
 def is_traversed(shelf, path):
@@ -66,12 +66,31 @@ def cal_fitness(path, D):
         fitness += D[path[i-1]][path[i]] # fitness += D[previous_node][current_node]
     return fitness
 
+# Mutated gene: swap two positions
+def mutated_swap(ind, D):
+    while True:
+        r = rand_num(1, len(ind.path) - 1) # First random position (cannot be first or last postion)
+        r1 = rand_num(1, len(ind.path) - 1) # Second random position
+        if r != r1:
+            temp = ind.path[r]
+            ind.path[r] = ind.path[r1]
+            ind.path[r1] = temp
+            break
+    ind.fitness = cal_fitness(ind.path, D) # Recalculate fitness value
+
+# Mutated gene: cut from a position and generate a new part
+def mutated_add(ind, M, D, q):
+    r = rand_num(len(ind.path)//2, len(ind.path) - 1) # Random position to cut (from len//2 -> len-1)
+    for s in ind.path[r:]:
+        ind.path.remove(s)
+     
+
 def traverse_until():
     N, M, Q, D, q = getInput()
 
     s = 0 # Starting location
 
-    POP_NUM = 100 # The number of individuals
+    POP_NUM = 3 # The number of individuals
     POPULATION = [] # An array that contains all individuals
 
     # Create a population of POP_NUM individuals
@@ -81,9 +100,15 @@ def traverse_until():
         temp_ind.fitness = cal_fitness(temp_ind.path, D)
         POPULATION.append(temp_ind)
 
+    POPULATION.sort()
+
     for i in POPULATION:
         print("------- BREAK -------")
         print(i.path)
         print("FITNESS =", i.fitness)
+
+    mutated_swap(POPULATION[0], D)
+    print(POPULATION[0].path)
+    print("FITNESS =", POPULATION[0].fitness)
 
 traverse_until()
