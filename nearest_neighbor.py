@@ -32,7 +32,7 @@ def cal_nearest_shelf(c, D, M, r):
         if i not in r and D[c][i] != 0 and min_d > D[c][i]: # condition for nearest shelf
             nearest = i
             min_d = D[c][i]
-    return nearest, D[c][i]
+    return nearest, D[c][nearest]
 
 def nearest_neighbor():
     N, M, Q, D, q = getInput()
