@@ -134,13 +134,14 @@ def traverse_until():
 
     s = 0 # Starting location
     gen = 1 # Generation number
-    gen_thres = 100
+    gen_thres = 500
 
     POP_SIZE = 100 # The number of individuals
     population = [] # An array that contains all individuals
 
     MUTATED_SWAP_PERCENT = 0.5
     MUTATED_ADD_PERCENT = 0.5
+    CROSS_OVER_PERCENT = 0.0
 
     # Create a population of POP_SIZE individuals
     for i in range(POP_SIZE):
@@ -154,18 +155,19 @@ def traverse_until():
         print("-------- GEN %d ---------" % gen)
         # Mutated gene by swapping: 0.5% 
         mutated_swap_num = int(POP_SIZE*MUTATED_SWAP_PERCENT)
-        for ind in population[0:mutated_swap_num] :
+        for ind in population[0:mutated_swap_num]:
             new_ind = mutated_swap(ind, D)
             population.append(new_ind)
 
         # Mutated gene by cutting: 0.5%
         mutated_cut_num = mutated_swap_num + int(POP_SIZE*MUTATED_ADD_PERCENT)
-        print("mutated_swap_num=%d, mutated_cut_num=%d" % (mutated_swap_num, mutated_cut_num))
         for ind in population[mutated_swap_num:mutated_cut_num]:
             new_ind = mutated_cut(ind, M, N, D, Q, q)
             population.append(new_ind)
     
-        # Crossover gene: x%
+        # Crossover gene: x% (not done yet)
+
+        # Select individuals that have highest fitness value
         population = select(population, POP_SIZE)
     
         print_population(population)
