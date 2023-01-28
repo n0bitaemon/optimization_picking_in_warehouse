@@ -46,10 +46,12 @@ def print_solution(info, manager, routing, solution):
     plan_output = 'Route for vehicle 0:\n'
     route_distance = 0
     remain_route_load = info[4] #=q
-        
+    path = []
+
     while not routing.IsEnd(index):
                 node_index = manager.IndexToNode(index)
-                plan_output += ' {0} Remain Load({1}) -> '.format(node_index, remain_route_load)
+                plan_output += '\n-> {0}\nRemain Load({1})'.format(node_index, remain_route_load)
+                path.append(node_index)
                 
                 if all(ele==0 for ele in remain_route_load):
                     previous_index = index
@@ -65,11 +67,14 @@ def print_solution(info, manager, routing, solution):
                         remain_route_load[i]= remain_route_load[i] - info[2][i][index-1]
                     else:
                         remain_route_load[i] = 0
-    plan_output += ' {0} Remain Load({1})\n'.format(manager.IndexToNode(index),
+    plan_output += '\n-> {0}\nRemain Load({1})\n'.format(manager.IndexToNode(index),
                                                  remain_route_load)
+    path.append(manager.IndexToNode(index))
     plan_output += 'Distance of the route: {}m\n'.format(route_distance)
     print(plan_output)
     total_distance += route_distance
+    
+    print("Path traversed:", path)
 
 def CSP():
     global N, M, Q, q, d
@@ -143,5 +148,5 @@ def CSP():
 if __name__ == '__main__':
     t = time.time()
     CSP()
-    print('The time taken is: ',end = ' ')
+    print('\nThe time taken is: ',end = ' ')
     print(time.time() - t)
