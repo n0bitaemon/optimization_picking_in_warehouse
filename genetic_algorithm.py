@@ -1,24 +1,49 @@
 import random
 
-def getInput():
+def data(file):
+    #M: shelf
+    #N: types of goods
+    #Q: matrix of quantity of each type in all shelf
+    #q: quantity of each type we need to pick up
+    #d: matrix of distance between 2 shelves
+
+    with open(file, 'r') as f:
+        first_line = f.readline().split()
+        N, M = int(first_line[0]), int(first_line[1])
+        Q = []
+        D = []
+        q=[]
+        for i in range (1, 1+N):
+            type = f.readline().split()
+            Q.append(list(int(ele) for ele in type))
+        # print(Q)
+        for j in range (2+N, 3+N+M):
+            dis = f.readline().split()
+            D.append(list(int(ele) for ele in dis))
+        last_line = f.readline().split()
+        for ele in last_line:
+            q.append(int(ele))
+    return N, M, Q, D,q
+
+#def getInput():
     # N: The number of type of product
     # M: The number of shelf
-    N, M = [int(i) for i in input().split()]
+#   N, M = [int(i) for i in input().split()]
 
     # Matrix Q(NxM)
-    Q = []
-    for i in range(N): # Input N lines (equivalent to N types of product)
-        Q.append([int(i) for i in input().split()])
+#   Q = []
+#   for i in range(N): # Input N lines (equivalent to N types of product)
+#       Q.append([int(i) for i in input().split()])
 
     # Distance matrix
-    D = []
-    for i in range(M+1): # Input M+1 lines (equivalent to distances between shelf 0,1,2,...,M)
-        D.append([int(i) for i in input().split()])
+#   D = []
+#   for i in range(M+1): # Input M+1 lines (equivalent to distances between shelf 0,1,2,...,M)
+#       D.append([int(i) for i in input().split()])
 
     # Products that need to take
-    q = [int(i) for i in input().split()]
+#   q = [int(i) for i in input().split()]
 
-    return N, M, Q, D, q
+#   return N, M, Q, D, q
 
 class Individual:
     def __init__(self):
@@ -75,7 +100,7 @@ def create_path(s, Q, q, M, N):
 # Calculate fitness of a path
 def cal_fitness(path, D):
     fitness = 0
-    for i in range(len(path)):
+    for i in range(1, len(path)):
         fitness += D[path[i-1]][path[i]] # fitness += D[previous_node][current_node]
     return fitness
 
@@ -130,7 +155,7 @@ def print_population(p):
         print("FITNESS:", p[i].fitness)
 
 def traverse_until():
-    N, M, Q, D, q = getInput()
+    N, M, Q, D, q = data('1.txt')
 
     s = 0 # Starting location
     gen = 1 # Generation number

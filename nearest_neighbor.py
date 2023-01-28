@@ -1,23 +1,47 @@
+import time 
+
 INT_MAX = 2147483647
-def getInput():
-    # N: The number of type of product
-    # M: The number of shelf
-    N, M = [int(i) for i in input().split()]
+
+start = time.time()
+
+def data(file):
+    with open(file, 'r') as f:
+        first_line = f.readline().split()
+        N, M = int(first_line[0]), int(first_line[1])
+        Q = []
+        D = []
+        q = []
+        for i in range(1, 1+N):
+            type = f.readline().split()
+            Q.append(list(int(ele) for ele in type))
+        # print(Q)
+        for j in range(2+N, 3+N+M):
+            dis = f.readline().split()
+            D.append(list(int(ele) for ele in dis))
+        last_line = f.readline().split()
+        for ele in last_line:
+            q.append(int(ele))
+    return N, M, Q, D, q
+
+#def getInput():
+#   N: The number of type of product
+#   M: The number of shelf
+#   N, M = [int(i) for i in input().split()]
 
     # Matrix Q(NxM)
-    Q = []
-    for i in range(N): # Input N lines (equivalent to N types of product)
-        Q.append([int(i) for i in input().split()])
+#   Q = []
+#   for i in range(N): # Input N lines (equivalent to N types of product)
+#       Q.append([int(i) for i in input().split()])
 
     # Distance matrix
-    D = []
-    for i in range(M+1): # Input M+1 lines (equivalent to distances between shelf 0,1,2,...,M)
-        D.append([int(i) for i in input().split()])
+#   D = []
+#   for i in range(M+1): # Input M+1 lines (equivalent to distances between shelf 0,1,2,...,M)
+#       D.append([int(i) for i in input().split()])
 
     # Products that need to take
-    q = [int(i) for i in input().split()]
+#   q = [int(i) for i in input().split()]
 
-    return N, M, Q, D, q
+#   return N, M, Q, D, q
 
 # Check to see if we have enough products
 def end(q):
@@ -35,12 +59,11 @@ def cal_nearest_shelf(c, D, M, r):
     return nearest, D[c][nearest]
 
 def nearest_neighbor():
-    N, M, Q, D, q = getInput()
+    N, M, Q, D, q = data('1.txt')
     print("N = %d, M = %d" % (N, M))
-    print("len(Q) = %d, len(D) = %d, len(q) = %d" % (len(Q), len(D), len(q)))
-    print("MATRIX q: ")
-    print(q)
-    print("-------")
+#   print("len(Q) = %d, len(D) = %d, len(q) = %d" % (len(Q), len(D), len(q)))
+    print("MATRIX q:", q)
+    print("\n###### RESULT ######\n")
     s = 0 # Starting location
     c = s # Current location
     r = [] # Result array
@@ -53,7 +76,7 @@ def nearest_neighbor():
     while end(q) == False:
         c, distance = cal_nearest_shelf(c, D, M, r) # Find next shelf to go
         r.append(c)
-        print("Go to shelf %d" % c)
+        print(">>> Go to shelf %d" % c)
         total += distance # Increase distance moved 
         for i in range(N):
             if(q[i] != 0):
@@ -62,14 +85,18 @@ def nearest_neighbor():
         print("Matrix q:", q)
 
     r.append(s) # Append ending location
-    print("Return to shelf %d" % s)
+    print(">>> Return to shelf %d" % s)
     total += D[c][s]
 
     print("\nPATH TRAVERSED:")
     for shelf in r[:-1]:
         print("%d" % shelf, end="->")
     print(r[-1])
+    print("\nNUMBER OF SHELF:", len(r))
     print("\nTOTAL DISTANCE:", total)
 
 
 nearest_neighbor()
+
+elapsed = time.time() - start # Time taken for the program
+print("\nTime taken:", elapsed)
