@@ -134,9 +134,9 @@ def traverse_until():
 
     s = 0 # Starting location
     gen = 1 # Generation number
-    gen_thres = 500
+    gen_thres = 100
 
-    POP_SIZE = 100 # The number of individuals
+    POP_SIZE = 300 # The number of individuals
     population = [] # An array that contains all individuals
 
     MUTATED_SWAP_PERCENT = 0.5

@@ -36,6 +36,11 @@ def cal_nearest_shelf(c, D, M, r):
 
 def nearest_neighbor():
     N, M, Q, D, q = getInput()
+    print("N = %d, M = %d" % (N, M))
+    print("len(Q) = %d, len(D) = %d, len(q) = %d" % (len(Q), len(D), len(q)))
+    print("MATRIX q: ")
+    print(q)
+    print("-------")
     s = 0 # Starting location
     c = s # Current location
     r = [] # Result array
@@ -61,9 +66,10 @@ def nearest_neighbor():
     total += D[c][s]
 
     print("\nPATH TRAVERSED:")
-    for shelf in r[:-2]:
+    for shelf in r[:-1]:
         print("%d" % shelf, end="->")
     print(r[-1])
     print("\nTOTAL DISTANCE:", total)
+
 
 nearest_neighbor()
