@@ -61,9 +61,8 @@ def cal_nearest_shelf(c, D, M, r):
 def nearest_neighbor():
     N, M, Q, D, q = data('1.txt')
     print("N = %d, M = %d" % (N, M))
-#   print("len(Q) = %d, len(D) = %d, len(q) = %d" % (len(Q), len(D), len(q)))
+    print("len(Q) = %d, len(D) = %d, len(q) = %d" % (len(Q), len(D), len(q)))
     print("MATRIX q:", q)
-    print("\n###### RESULT ######\n")
     s = 0 # Starting location
     c = s # Current location
     r = [] # Result array
@@ -88,12 +87,13 @@ def nearest_neighbor():
     print(">>> Return to shelf %d" % s)
     total += D[c][s]
 
-    print("\nPATH TRAVERSED:")
+    print("\n#### RESULT ####")
+    print("\nPath traversed:\n")
     for shelf in r[:-1]:
         print("%d" % shelf, end="->")
     print(r[-1])
-    print("\nNUMBER OF SHELF:", len(r))
-    print("\nTOTAL DISTANCE:", total)
+    print("\nNumber of nodes:", len(r))
+    print("\nDistance of the route:", total)
 
 
 nearest_neighbor()

@@ -71,17 +71,18 @@ def cal_q(path, N, Q, q):
                 q[i] -= taken
     return q
 
-def cal_length(path, N, Q, q):
-    length = 1 # Being in the starting position at first
+def cal_real_path(path, N, Q, q):
+    real_path = [0]
     q_temp = q.copy()
     for shelf in path[1:]:
-        length += 1
+        real_path.append(shelf)
         for i in range(N):
             if q_temp[i] != 0: # Visit this shelf
                 taken = Q[i][shelf-1] if Q[i][shelf-1] < q_temp[i] else q_temp[i]
                 q_temp[i] -= taken
         if end(q_temp):
-            return length
+            real_path.append(0)
+            return real_path
 
 # s: starting position
 # Create a path randomly
@@ -159,10 +160,10 @@ def crossover_ox(p1, p2, M, N, Q, D, q):
 #    print(g1)
 #    print(g2)
     c1.path = fill_child(p1, g2, r, r1, M)
-    c1.length = cal_length(c1.path, N, Q, q)
+    c1.length = len(cal_real_path(c1.path, N, Q, q)) - 1
     c1.fitness = cal_fitness(c1, D)
     c2.path = fill_child(p2, g1, r, r1, M)
-    c2.length = cal_length(c2.path, N, Q, q)
+    c2.length = len(cal_real_path(c2.path, N, Q, q)) - 1
     c2.fitness = cal_fitness(c2, D)
     return c1, c2
 
@@ -218,16 +219,16 @@ def select(pop, size):
     return pop[:size]
 
 # Print information about every members in the population
-def print_pop(pop):
+def print_pop(pop, N, Q, q):
     print("@@@ POPULATION INFORMATION @@@")
     for i in range(len(pop)):
         print("=> INDIVIDUAL %d" % (i+1))
         print_ind(pop[i])
 
-def print_ind(ind):
-    print(ind.path)
-    print("FITNESS:", ind.fitness)
-    print("LENGTH:", ind.length)
+def print_ind(ind, N, Q, q):
+    print(cal_real_path(ind.path, N, Q, q))
+    print("\nDistance of the route:", ind.fitness)
+    print("Number of nodes:", ind.length+1)
 
 def traverse_until():
     N, M, Q, D, q = data('1.txt')
@@ -240,7 +241,7 @@ def traverse_until():
     # Vars
     pop = [] # Population array
     gen = 1 # Current generation
-    gen_thres = 300 # Number of generations
+    gen_thres = 100 # Number of generations
     s = 0 # Starting position
 
     # Generate POP_SIZE individuals and append to population
@@ -248,11 +249,11 @@ def traverse_until():
         ind = create_individual(s, Q, D, q, M, N)
         pop.append(ind) 
 
-    print_pop(pop)
+#   print_pop(pop, N, Q, q)
 
     # Loop for generations
     while gen <= gen_thres:
-        print("###### GENERATION %d ######" % gen)
+#       print("###### GENERATION %d ######" % gen)
 
         random.shuffle(pop)
 
@@ -283,12 +284,12 @@ def traverse_until():
             i+=2
         pop = select(pop, POP_SIZE)
 
-        print_pop(pop)
+#       print_pop(pop, N, Q, q)
 
         gen += 1
 
-    print("\n#### RESULT ####")
-    print_ind(pop[0])
+    print("\n#### RESULT ####\n")
+    print_ind(pop[0], N, Q, q)
 
 traverse_until()
 

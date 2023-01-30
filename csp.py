@@ -70,7 +70,7 @@ def print_solution(info, manager, routing, solution):
     plan_output += '\n-> {0}\nRemain Load({1})\n'.format(manager.IndexToNode(index),
                                                  remain_route_load)
     path.append(manager.IndexToNode(index))
-    plan_output += 'Distance of the route: {}m\n'.format(route_distance)
+    plan_output += '\nDistance of the route: {}\n'.format(route_distance)
     print(plan_output)
     total_distance += route_distance
     
@@ -134,7 +134,7 @@ def CSP():
         routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC)
     search_parameters.local_search_metaheuristic = (
         routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH)
-    search_parameters.time_limit.FromSeconds(3)
+    search_parameters.time_limit.FromSeconds(1)
     
     # Solve the problem.
     solution = routing.SolveWithParameters(search_parameters)
