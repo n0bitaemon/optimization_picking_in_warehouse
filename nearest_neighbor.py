@@ -93,11 +93,10 @@ def nearest_neighbor():
     print(len(r)-2) # Number of shelfs the staff have to travel
     for shelf in r[1:-1]:
         print("%d" % shelf, end=" ")
-#   print("\nNumber of nodes:", len(r))
-#   print("\nDistance of the route:", total)
+    print("\nDistance of the route:", total)
 
 
 nearest_neighbor()
 
 elapsed = time.time() - start # Time taken for the program
-#rint("\nTime taken:", elapsed)
+print("\nTime taken:", elapsed)

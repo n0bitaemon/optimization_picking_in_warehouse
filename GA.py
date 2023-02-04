@@ -230,7 +230,7 @@ def print_ind(ind, N, Q, q):
     print(len(path) - 2)
     for shelf in path[1:-1]:
         print(shelf, end=' ')
-#   print("\nDistance of the route:", ind.fitness)
+    print("\nDistance of the route:", ind.fitness)
 
 def traverse_until():
     N, M, Q, D, q = data('1.txt')
@@ -270,7 +270,7 @@ def traverse_until():
             # mutation_c1 <= 0.1 then call mutation_cut()
             if mutation_c1 <= MUTATION_ADD_PERCENT:
                 c1 = mutation_cut(c1, M, N, D, Q, q)
-            # else if 0.1 < mutation_c1 <= 0.2 then call mutation_swap()
+             else if 0.1 < mutation_c1 <= 0.2 then call mutation_swap()
             elif mutation_c1 <= MUTATION_SWAP_PERCENT:
                 c1 = mutation_swap(c1, D)
             # mutation_c2 <= 0.1 then call mutation_cut()
@@ -296,4 +296,4 @@ def traverse_until():
 traverse_until()
 
 elapsed = time.time() - start
-#print("\nTime taken:", elapsed)
+print("\nTime taken:", elapsed)

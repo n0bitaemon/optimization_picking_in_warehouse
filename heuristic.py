@@ -71,7 +71,7 @@ def print_solution(info, manager, routing, solution):
                                                  remain_route_load)
     path.append(manager.IndexToNode(index))
     plan_output += '\nDistance of the route: {}\n'.format(route_distance)
-#   print(plan_output)
+    print(plan_output)
     total_distance += route_distance
     
     print(len(path)-2)
