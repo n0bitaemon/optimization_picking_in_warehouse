@@ -226,22 +226,24 @@ def print_pop(pop, N, Q, q):
         print_ind(pop[i])
 
 def print_ind(ind, N, Q, q):
-    print(cal_real_path(ind.path, N, Q, q))
-    print("\nDistance of the route:", ind.fitness)
-    print("Number of nodes:", ind.length+1)
+    path = cal_real_path(ind.path, N, Q, q)
+    print(len(path) - 2)
+    for shelf in path[1:-1]:
+        print(shelf, end=' ')
+#   print("\nDistance of the route:", ind.fitness)
 
 def traverse_until():
     N, M, Q, D, q = data('1.txt')
 
     # Constants
-    POP_SIZE = 10 # Size of the population
+    POP_SIZE = 30 # Size of the population
     MUTATION_SWAP_PERCENT = 0.2
     MUTATION_ADD_PERCENT = 0.1
     
     # Vars
     pop = [] # Population array
     gen = 1 # Current generation
-    gen_thres = 100 # Number of generations
+    gen_thres = 200 # Number of generations
     s = 0 # Starting position
 
     # Generate POP_SIZE individuals and append to population
@@ -288,10 +290,10 @@ def traverse_until():
 
         gen += 1
 
-    print("\n#### RESULT ####\n")
+#   print("\n#### RESULT ####\n")
     print_ind(pop[0], N, Q, q)
 
 traverse_until()
 
 elapsed = time.time() - start
-print("\nTime taken:", elapsed)
+#print("\nTime taken:", elapsed)

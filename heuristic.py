@@ -71,10 +71,12 @@ def print_solution(info, manager, routing, solution):
                                                  remain_route_load)
     path.append(manager.IndexToNode(index))
     plan_output += '\nDistance of the route: {}\n'.format(route_distance)
-    print(plan_output)
+#   print(plan_output)
     total_distance += route_distance
     
-    print("Path traversed:", path)
+    print(len(path)-2)
+    for i in path[1:-1]:
+        print(i, end=' ')
 
 def CSP():
     global N, M, Q, q, d
@@ -134,7 +136,7 @@ def CSP():
         routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC)
     search_parameters.local_search_metaheuristic = (
         routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH)
-    search_parameters.time_limit.FromSeconds(1)
+    search_parameters.time_limit.FromSeconds(5)
     
     # Solve the problem.
     solution = routing.SolveWithParameters(search_parameters)
@@ -148,5 +150,5 @@ def CSP():
 if __name__ == '__main__':
     t = time.time()
     CSP()
-    print('\nThe time taken is: ',end = ' ')
-    print(time.time() - t)
+#   print('\nThe time taken is: ',end = ' ')
+#   print(time.time() - t)

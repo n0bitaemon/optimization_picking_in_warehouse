@@ -60,43 +60,44 @@ def cal_nearest_shelf(c, D, M, r):
 
 def nearest_neighbor():
     N, M, Q, D, q = data('1.txt')
-    print("N = %d, M = %d" % (N, M))
-    print("len(Q) = %d, len(D) = %d, len(q) = %d" % (len(Q), len(D), len(q)))
-    print("MATRIX q:", q)
+#   print("N = %d, M = %d" % (N, M))
+#   print("len(Q) = %d, len(D) = %d, len(q) = %d" % (len(Q), len(D), len(q)))
+#   print("MATRIX q:", q)
     s = 0 # Starting location
     c = s # Current location
     r = [] # Result array
     total = 0 # Total distance moved
 
     r.append(s) # Append starting location
-    print("Start from shelf %d" % s)
-    print("Matrix q:", q)
+#   print("Start from shelf %d" % s)
+#   print("Matrix q:", q)
 
     while end(q) == False:
         c, distance = cal_nearest_shelf(c, D, M, r) # Find next shelf to go
         r.append(c)
-        print(">>> Go to shelf %d" % c)
+#       print(">>> Go to shelf %d" % c)
         total += distance # Increase distance moved 
         for i in range(N):
             if(q[i] != 0):
                 taken = Q[i][c-1] if Q[i][c-1] < q[i] else q[i] # The number of products of type i we will take from the shelf c
                 q[i] -= taken
-        print("Matrix q:", q)
+#       print("Matrix q:", q)
 
     r.append(s) # Append ending location
-    print(">>> Return to shelf %d" % s)
+#   print(">>> Return to shelf %d" % s)
     total += D[c][s]
 
-    print("\n#### RESULT ####")
-    print("\nPath traversed:\n")
-    for shelf in r[:-1]:
-        print("%d" % shelf, end="->")
-    print(r[-1])
-    print("\nNumber of nodes:", len(r))
-    print("\nDistance of the route:", total)
+#   print("\n#### RESULT ####")
+#   print("\nPath traversed:\n")
+#   print(total)
+    print(len(r)-2) # Number of shelfs the staff have to travel
+    for shelf in r[1:-1]:
+        print("%d" % shelf, end=" ")
+#   print("\nNumber of nodes:", len(r))
+#   print("\nDistance of the route:", total)
 
 
 nearest_neighbor()
 
 elapsed = time.time() - start # Time taken for the program
-print("\nTime taken:", elapsed)
+#rint("\nTime taken:", elapsed)
