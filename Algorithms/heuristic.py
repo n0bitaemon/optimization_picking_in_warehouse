@@ -10,7 +10,7 @@ def data(file):
     #q: quantity of each type we need to pick up
     #d: matrix of distance between 2 shelves
 
-    with open(file, 'r') as f:
+    with open(r'{0}'.format(file), 'r') as f:
         first_line = f.readline().split()
         N, M = int(first_line[0]), int(first_line[1])
         Q = []
@@ -28,7 +28,7 @@ def data(file):
             q.append(int(ele))
     return [N, M, Q, d,q]
 
-info = data('1.txt')
+info = data(input())
 # print(i)
 N = info[0]
 M = info[1]
