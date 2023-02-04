@@ -230,8 +230,8 @@ def print_ind(ind, N, Q, q):
     print("\nDistance of the route:", ind.fitness)
     print("Number of nodes:", ind.length+1)
 
-def traverse_until():
-    N, M, Q, D, q = data('1.txt')
+def traverse_until(time_limit: int = 600):
+    N, M, Q, D, q = data('1000_2000.txt')
 
     # Constants
     POP_SIZE = 10 # Size of the population
