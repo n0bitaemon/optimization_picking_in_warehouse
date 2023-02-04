@@ -15,7 +15,7 @@ def data(file):
         N, M = int(first_line[0]), int(first_line[1])
         Q = []
         d = []
-        q=[]
+        q = []
         for i in range (1, 1+N):
             type = f.readline().split()
             Q.append(list(int(ele) for ele in type))
@@ -28,7 +28,7 @@ def data(file):
             q.append(int(ele))
     return [N, M, Q, d,q]
 
-info = data(input())
+info = data('1.txt')
 # print(i)
 N = info[0]
 M = info[1]
