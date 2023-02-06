@@ -4,7 +4,7 @@ INT_MAX = 2147483647
 
 start = time.time()
 
-def data(file):
+'''def data(file):
     with open(file, 'r') as f:
         first_line = f.readline().split()
         N, M = int(first_line[0]), int(first_line[1])
@@ -22,26 +22,26 @@ def data(file):
         for ele in last_line:
             q.append(int(ele))
     return N, M, Q, D, q
-
-#def getInput():
-#   N: The number of type of product
-#   M: The number of shelf
-#   N, M = [int(i) for i in input().split()]
+'''
+def data():
+   #N: The number of type of product
+   #M: The number of shelf
+   N, M = [int(i) for i in input().split()]
 
     # Matrix Q(NxM)
-#   Q = []
-#   for i in range(N): # Input N lines (equivalent to N types of product)
-#       Q.append([int(i) for i in input().split()])
+   Q = []
+   for i in range(N): # Input N lines (equivalent to N types of product)
+       Q.append([int(i) for i in input().split()])
 
     # Distance matrix
-#   D = []
-#   for i in range(M+1): # Input M+1 lines (equivalent to distances between shelf 0,1,2,...,M)
-#       D.append([int(i) for i in input().split()])
+   D = []
+   for i in range(M+1): # Input M+1 lines (equivalent to distances between shelf 0,1,2,...,M)
+       D.append([int(i) for i in input().split()])
 
     # Products that need to take
-#   q = [int(i) for i in input().split()]
+   q = [int(i) for i in input().split()]
 
-#   return N, M, Q, D, q
+   return N, M, Q, D, q
 
 # Check to see if we have enough products
 def end(q):
@@ -59,7 +59,7 @@ def cal_nearest_shelf(c, D, M, r):
     return nearest, D[c][nearest]
 
 def nearest_neighbor():
-    N, M, Q, D, q = data('1.txt')
+    N, M, Q, D, q = data('10_20.txt')
     print("N = %d, M = %d" % (N, M))
     print("len(Q) = %d, len(D) = %d, len(q) = %d" % (len(Q), len(D), len(q)))
     print("MATRIX q:", q)
