@@ -2,7 +2,7 @@ import random
 import time
 
 start = time.time()
-
+'''
 def data(file):
     #M: shelf
     #N: types of goods
@@ -26,8 +26,26 @@ def data(file):
         last_line = f.readline().split()
         for ele in last_line:
             q.append(int(ele))
-    return N, M, Q, D,q
+    return N, M, Q, D,q'''
+def data():
+   #N: The number of type of product
+   #M: The number of shelf
+   N, M = [int(i) for i in input().split()]
 
+    # Matrix Q(NxM)
+   Q = []
+   for i in range(N): # Input N lines (equivalent to N types of product)
+       Q.append([int(i) for i in input().split()])
+
+    # Distance matrix
+   D = []
+   for i in range(M+1): # Input M+1 lines (equivalent to distances between shelf 0,1,2,...,M)
+       D.append([int(i) for i in input().split()])
+
+    # Products that need to take
+   q = [int(i) for i in input().split()]
+
+   return N, M, Q, D, q
 class Individual:
     def __init__(self):
         self.path = []
@@ -220,7 +238,7 @@ def select(pop, size):
 
 # Print information about every members in the population
 def print_pop(pop, N, Q, q):
-    print("@@@ POPULATION INFORMATION @@@")
+    #print("@@@ POPULATION INFORMATION @@@")
     for i in range(len(pop)):
         print("=> INDIVIDUAL %d" % (i+1))
         print_ind(pop[i])
@@ -231,7 +249,7 @@ def print_ind(ind, N, Q, q):
     print("Number of nodes:", ind.length+1)
 
 def traverse_until(time_limit: int = 600):
-    N, M, Q, D, q = data('1000_2000.txt')
+    N, M, Q, D, q = data()
 
     # Constants
     POP_SIZE = 10 # Size of the population
@@ -288,10 +306,10 @@ def traverse_until(time_limit: int = 600):
 
         gen += 1
 
-    print("\n#### RESULT ####\n")
+    #print("\n#### RESULT ####\n")
     print_ind(pop[0], N, Q, q)
 
 traverse_until()
 
-elapsed = time.time() - start
-print("\nTime taken:", elapsed)
+#elapsed = time.time() - start
+#print("\nTime taken:", elapsed)

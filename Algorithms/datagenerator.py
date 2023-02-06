@@ -37,4 +37,4 @@ def genData(filename, M, N, MAX_COORDINATE, MAX_Q):
         q[i] = rd.randint(1, sum(Q[i][j] for j in range(M)))
         f.write(str(q[i]) + ' ')
 
-genData('50_100.txt', 50, 100, 10, 100)
+genData('25_50.txt', 20, 40, 10, 100)

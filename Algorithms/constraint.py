@@ -26,7 +26,7 @@ def data(file):
             q.append(int(ele))
     return [N, M, Q, d,q]
 
-info = data('200_400.txt')
+info = data('500_1000.txt')
 # print(i)
 N = info[0]
 M = info[1]

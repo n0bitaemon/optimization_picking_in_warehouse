@@ -2,7 +2,7 @@
 from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
 import time
-
+'''
 def data(file):
     #M: shelf
     #N: types of goods
@@ -27,8 +27,28 @@ def data(file):
         for ele in last_line:
             q.append(int(ele))
     return [N, M, Q, d,q]
+'''
+def data():
+   #N: The number of type of product
+   #M: The number of shelf
+   N, M = [int(i) for i in input().split()]
 
-info = data('1.txt')
+    # Matrix Q(NxM)
+   Q = []
+   for i in range(N): # Input N lines (equivalent to N types of product)
+       Q.append([int(i) for i in input().split()])
+
+    # Distance matrix
+   D = []
+   for i in range(M+1): # Input M+1 lines (equivalent to distances between shelf 0,1,2,...,M)
+       D.append([int(i) for i in input().split()])
+
+    # Products that need to take
+   q = [int(i) for i in input().split()]
+
+   return N, M, Q, D, q
+
+info = data()
 # print(i)
 N = info[0]
 M = info[1]
@@ -72,9 +92,10 @@ def print_solution(info, manager, routing, solution):
     path.append(manager.IndexToNode(index))
     plan_output += '\nDistance of the route: {}\n'.format(route_distance)
     print(plan_output)
-    total_distance += route_distance
-    
-    print("Path traversed:", path)
+    #total_distance += route_distance
+    #path_update = " ".join([str(i) for i in path]).replace(" ","->")
+    #print("Path traversed:", path_update)
+    #print("Number of nodes: ",len(path))
 
 def CSP():
     global N, M, Q, q, d
@@ -134,7 +155,7 @@ def CSP():
         routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC)
     search_parameters.local_search_metaheuristic = (
         routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH)
-    search_parameters.time_limit.FromSeconds(1)
+    search_parameters.time_limit.FromSeconds(60)
     
     # Solve the problem.
     solution = routing.SolveWithParameters(search_parameters)
@@ -146,7 +167,7 @@ def CSP():
         print("No solution")
 
 if __name__ == '__main__':
-    t = time.time()
+    #t = time.time()
     CSP()
-    print('\nThe time taken is: ',end = ' ')
-    print(time.time() - t)
+    #print('\nThe time taken is: ',end = ' ')
+    #print(time.time() - t)
