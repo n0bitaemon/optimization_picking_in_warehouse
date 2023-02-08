@@ -92,6 +92,6 @@ plt.title("Comparing running time between 4 methods")
 plt.legend(loc = "upper left")  
 fig.tight_layout()
 #plt.show()
-plt.savefig("src/figures/Comparing_running_time_4_methods.png")  
+plt.savefig("D:/Github/optimization_picking_in_warehouse/src/figures/Comparing_running_time_4_methods.png")  
 
     

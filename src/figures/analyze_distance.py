@@ -99,7 +99,7 @@ ax.bar_label(bar4,padding=3)
 plt.text(0,2000,"Can't find feasible solution => p_min = 0",fontdict={'color': 'black','size':'15'},bbox = {'edgecolor' : 'red','facecolor':'none'})
 plt.legend(loc = "upper left")  
 fig.tight_layout()
-#plt.show()
-plt.savefig("D:/Github/optimization_picking_in_warehouse/src/figures/Comparing_distance_between_4_methods.png")  
+plt.show()
+#plt.savefig("D:/Github/optimization_picking_in_warehouse/src/figures/Comparing_distance_between_4_methods.png")  
 
     

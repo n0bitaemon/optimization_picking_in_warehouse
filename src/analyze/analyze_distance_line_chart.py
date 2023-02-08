@@ -39,8 +39,7 @@ for path in result_path:
         success_tests.append(len(remove_fails))
         fail_tests.append(len(data) - len(remove_fails))
         minimum_distance.append(_minimum_distance)
-#run_time[2].append(None)
-print(run_time)
+print(minimum_distance)
 #print(n_types_of_goods)
 #print(m_shelves)
 #N_M_20_10,N_M_100_50,N_M_200_100,N_M_400_200,N_M_1000_500,N_M_2000_1000,N_M_4000_2000 = [],[],[],[],[],[],[]
@@ -51,7 +50,7 @@ print(run_time)
 #   N_M_1000_500.append(minimum_distance[i][4])
 #    N_M_2000_1000.append(minimum_distance[i][5])
 #   N_M_4000_2000.append(minimum_distance[i][6])
-CSP,GA,Heuristic,Nea_Neig = run_time[0],run_time[1],run_time[2],run_time[3]
+CSP,GA,Heuristic,Nea_Neig = minimum_distance[0],minimum_distance[1],minimum_distance[2],minimum_distance[3]
 '''
 for i in range(CSP.count(None)):
     CSP.remove(None)
@@ -81,17 +80,17 @@ line4 = ax.plot(x - width/2 ,Nea_Neig,label = "Nearest Neighbors")
 
 ax.set_xticks(x + width/2, N_M)
 ax.set_xticklabels(N_M)
-ax.set_ylabel("Running time")
+ax.set_ylabel("p_min")
 
 ax = plt.gca()
-ax.set_ylim([0,60])
+#ax.set_ylim([0,60])
 #ax.set_xlabel("Run Time")
-plt.title("Comparing running time between 4 methods")
+plt.title("Comparing distance between 4 methods")
 
 
 plt.legend(loc = "upper left")  
 fig.tight_layout()
 #plt.show()
-plt.savefig("src/figures/Comparing_running_time_4_methods.png")  
+plt.savefig("D:/Github/Optimization_picking_in_warehouse/src/figures/Comparing_distance_line_chart_between_4_methods.png")  
 
     

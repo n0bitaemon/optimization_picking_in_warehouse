@@ -21,21 +21,15 @@ for path in result_path:
         data = f.readlines()
         data.pop(0)
         for line in data:
-            if "No solution" not in line:
-                remove_fails.append(line)
-        #print(remove_fails)
-        for line in remove_fails:
+            values = line.strip().split(",")
+            #print(values)
+            _n_types_of_goods.append(int(values[0]))
+            _m_shelves.append(int(values[1]))
             if "CAN'T" not in line:
-                values = line.strip().split(",")
-                #print(values)
-                _n_types_of_goods.append(int(values[0]))
-                _m_shelves.append(int(values[1]))
                 _run_time.append(float(values[5]))
                 _minimum_distance.append(int(values[4]))
                 _number_of_nodes.append(int(values[6]))
             else:
-                _n_types_of_goods.append(None)
-                _m_shelves.append(None) 
                 _run_time.append(None)
                 _minimum_distance.append(None)
                 _number_of_nodes.append(None)
@@ -45,7 +39,6 @@ for path in result_path:
         success_tests.append(len(remove_fails))
         fail_tests.append(len(data) - len(remove_fails))
         minimum_distance.append(_minimum_distance)
-minimum_distance[2].append(None)
 print(minimum_distance)
 #print(n_types_of_goods)
 #print(m_shelves)
@@ -99,7 +92,7 @@ ax.bar_label(bar4,padding=3)
 plt.text(0,2000,"Can't find feasible solution => p_min = 0",fontdict={'color': 'black','size':'15'},bbox = {'edgecolor' : 'red','facecolor':'none'})
 plt.legend(loc = "upper left")  
 fig.tight_layout()
-plt.show()
-#plt.savefig("D:/Github/optimization_picking_in_warehouse/src/figures/Comparing_distance_between_4_methods.png")  
+#plt.show()
+plt.savefig("D:/Github/optimization_picking_in_warehouse/src/figures/Comparing_distance_bar_chart_between_4_methods.png")  
 
     
