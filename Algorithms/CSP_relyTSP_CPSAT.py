@@ -26,7 +26,7 @@ def data(file):
             q.append(int(ele))
     return [N, M, Q, d,q]
 
-info = data('500_1000.txt')
+info = data('200_400.txt')
 # print(i)
 N = info[0]
 M = info[1]
@@ -111,5 +111,6 @@ def main():
     print("Number of nodes: ",len(path))
 
 if __name__ == '__main__':
+    start = time.time()
     main()
-    print("Total time execution: ",time.time())
+    print("Total time execution: ",time.time() - start)
