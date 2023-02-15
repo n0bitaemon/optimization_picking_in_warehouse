@@ -4,10 +4,10 @@
 ## Collaborators 
 | Name                         | Student ID       | Mail                                      |
 | :---                         |    :----:        |          :---:                            |
-| Nguyen Minh Triet            | 20214975         | triet.nm214975@sis.hust.edu.vn          |
-| Vu Hoang Ngoc                | 20210646         | ngoc.vh210646@sis.hust.edu.vn           |
-| Nguyen Hai Ninh              | 20214968         | ninh.nh214968@sis.hust.edu.vn           |
-| Tran Minh Tuan               | 20214978         | tuan.tm214978@sis.hust.edu.vn           |
+| Nguyen Minh Triet            | 20214975         | triet.nm214975@sis.hust.edu.vn            |
+| Vu Hoang Ngoc                | 20210646         | ngoc.vh210646@sis.hust.edu.vn             |
+| Nguyen Hai Ninh              | 20214968         | ninh.nh214968@sis.hust.edu.vn             |
+| Tran Minh Tuan               | 20214978         | tuan.tm214978@sis.hust.edu.vn             |
 
 ## Missions
 
@@ -28,9 +28,9 @@ Each member makes their own slides for the part they will represent.
 ### Code
 | Name                          | Student ID      | Mission                                   |
 | :---                          |   :----:        |         :---:                             |
-| Nguyen Minh Triet             | 20214975        | Code GA + nearest neighbor                |
+| Nguyen Minh Triet             | 20214975        | Code GA + Nearest neighbor                |
 | Vu Hoang Ngoc                 | 20210646        | Code CSP + Heuristic                      |
-| Tran Minh Tuan                | 20214978        | Code CSP                                  |
+| Tran Minh Tuan                | 20214978        | Code CSP, Experiments                     |
 
 ## Representors
 | Name                          | Student ID      | Part                                      |
@@ -39,3 +39,6 @@ Each member makes their own slides for the part they will represent.
 | Vu Hoang Ngoc                 | 20210646        | Modeling + CSP + Heuristic                |
 | Nguyen Hai Ninh               | 20214968        | Nearest neighbor                          |
 | Tran Minh Tuan                | 20214978        | Experiments                               |
+
+## Notes
+File `CSP_Tuan.py` was created by Tuan, file `CSP_Ngoc.py` was created by Ngoc but we chose Ngoc's file because it returns more optimal results.
