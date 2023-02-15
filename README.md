@@ -15,22 +15,21 @@
 Each member makes their own slides for the part they will represent.
 
 ### Research
-CSP + Heuristic: Vu Hoang Ngoc, Tran Minh Tuan
++) CSP + Heuristic: Vu Hoang Ngoc, Tran Minh Tuan
 
-Nearest Neighbor: Nguyen Minh Triet
++) Nearest Neighbor: Nguyen Minh Triet
 
-GA: Nguyen Hai Ninh, Nguyen Minh Triet
++) GA: Nguyen Hai Ninh, Nguyen Minh Triet
 
-Modeling: Vu Hoang Ngoc
++) Modeling: Vu Hoang Ngoc
 
-Conclusion: Tran Minh Tuan, Nguyen Hai Ninh
++) Experiments: Tran Minh Tuan, Nguyen Hai Ninh
 
 ### Code
 | Name                          | Student ID      | Mission                                   |
 | :---                          |   :----:        |         :---:                             |
 | Nguyen Minh Triet             | 20214975        | Code GA + nearest neighbor                |
 | Vu Hoang Ngoc                 | 20210646        | Code CSP + Heuristic                      |
-| Nguyen Hai Ninh               | 20214968        | Research about GA                         |
 | Tran Minh Tuan                | 20214978        | Code CSP                                  |
 
 ## Representors
