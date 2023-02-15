@@ -38,4 +38,4 @@ Each member makes their own slides for the part they will represent.
 | Nguyen Minh Triet             | 20214975        | Problem description + GA                  |
 | Vu Hoang Ngoc                 | 20210646        | Modeling + CSP + Heuristic                |
 | Nguyen Hai Ninh               | 20214968        | Nearest neighbor                          |
-| Tran Minh Tuan                | 20214978        | Conclusion                                |
+| Tran Minh Tuan                | 20214978        | Experiments                               |
